@@ -35,3 +35,7 @@ h1 {
 h3.orange {
     color: #FF7F50;
 }
+
+.card-body h5, .card-body p.card-text {
+    margin-bottom: 15px;
+}
