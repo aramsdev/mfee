@@ -1,1 +1,307 @@
+<!doctype html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>ATS EXAMPLE</title> 
+        <base href="/"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+            </style>
+    </head> 
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar w/ text</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                </ul>
+                <span class="navbar-text">
+                  Navbar text with an inline element
+                </span>
+              </div>
+        </nav>
+        <section>
+            <div class="container text-center">
+                <h3 class="orange">Making your life easier</h3>
+                <h1>Discovering de World</h1>
+            </div>
+        </section>
+        <section id="pagination-menu" class="container">
+            <div class="text-center">
+                <div id="categories" class="btn-group">
+                    <button type="button" id="ALL" class="btn btn-outline-secondary active" onclick="pagination_menu('ALL')">All</button>
+                    <button type="button" id="TRAVEL" class="btn btn-outline-secondary"  onclick="pagination_menu('TRAVEL')">Travel</button>
+                    <button type="button" id="LIFESTYLE" class="btn btn-outline-secondary" onclick="pagination_menu('LIFESTYLE')">Lifestyle</button>
+                    <button type="button" id="BUSINESS" class="btn btn-outline-secondary" onclick="pagination_menu('BUSINESS')">Business</button>
+                    <button type="button" id="FOOD" class="btn btn-outline-secondary" onclick="pagination_menu('FOOD')">Food</button>
+                    <button type="button" id="WORK" class="btn btn-outline-secondary" onclick="pagination_menu('WORK')">Work</button>
+                </div>
+            </div>
+            <div id="cards" class="mt-5">
+                
+            </div>
+        </section>
 
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true" data-action="edit">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="title-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="title-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="subtitle-name" class="col-form-label">Subtitle:</label>
+                                <input type="text" class="form-control" id="subtitle-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="img-name" class="col-form-label">Image:</label>
+                                <input type="text" class="form-control" id="img-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="text-name" class="col-form-label">Text:</label>
+                                <textarea class="form-control" id="text-name"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true" data-action="delete">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Card</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this card?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" id="delete" data-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let cardsInfo = {
+                "card-0": {
+                    title : "The waves are high & beautiful",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "TRAVEL"
+                },
+                "card-1": {
+                    title : "At the beach in winter",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "LIFESTYLE"
+                },
+                "card-2": {
+                    title : "What is Lorem Ipsum?",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/28905905/pexels-photo-28905905/free-photo-of-autumn-lakeside-fishing-in-beautiful-park.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "BUSINESS"
+                },
+                "card-3": {
+                    title : "Why do we use it?",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/8755965/pexels-photo-8755965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "FOOD"
+                },
+                "card-4": {
+                    title : "Where does it come from?",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/26976130/pexels-photo-26976130/free-photo-of-a-view-of-boats-on-the-water-near-the-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "WORK"
+                },
+                "card-5": {
+                    title : "Translation by H. Rackham",
+                    subtitle : "Lorem Ipsum",
+                    img : "https://images.pexels.com/photos/14840712/pexels-photo-14840712.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    category : "BUSINESS"
+                }
+            }
+
+            function displayCards(cards) {
+                let cardsDiv = document.getElementById("cards");
+                cardsDiv.innerHTML = ""; // Clear the previous content
+
+                let flexDiv = document.createElement("div");
+                flexDiv.classList.add("d-flex", "align-content-start", "flex-wrap");
+
+                cardsDiv.appendChild(flexDiv);
+
+                let keys = Object.keys(cardsInfo)
+
+                for (let key in cards) {
+                        let card = cards[key];
+
+                        let cardDiv = document.createElement("div");
+                        cardDiv.classList.add("card");
+                        cardDiv.id = keys[key];
+
+                        cardDiv.style.backgroundImage = `url(${card.img})`;
+                        cardDiv.style.backgroundSize = 'cover'; 
+                        cardDiv.style.backgroundPosition = 'center';
+
+                        let overlay = document.createElement("div");
+                        overlay.classList.add("overlay");
+
+                        let cardBody = document.createElement("div");
+                        cardBody.classList.add("card-body");
+
+                        let cardTitle = document.createElement("h2");
+                        cardTitle.classList.add("card-title");
+                        cardTitle.textContent = card.title;
+
+                        let cardSubtitle = document.createElement("h6");
+                        cardSubtitle.classList.add("card-subtitle");
+                        cardSubtitle.textContent = card.subtitle;
+
+                        let cardText = document.createElement("p");
+                        cardText.classList.add("card-text");
+                        cardText.textContent = card.text;
+
+                        let cardCategory = document.createElement("h6");
+                        cardCategory.classList.add("card-category");
+                        cardCategory.textContent = card.category;
+
+                        let editButton = document.createElement("button");
+                        editButton.type = "button";
+                        editButton.classList.add("btn", "btn-primary", "ml-2", "float-right");
+                        editButton.setAttribute("data-toggle", "modal");
+                        editButton.setAttribute("data-target", "#modal");
+                        editButton.setAttribute("data-title", card.title);
+                        editButton.setAttribute("data-subtitle", card.subtitle);
+                        editButton.setAttribute("data-text", card.text);
+                        editButton.setAttribute("data-img", card.img);
+                        editButton.setAttribute("data-id", keys[key]);
+                        editButton.textContent = "Edit";
+
+                        let deleteButton = document.createElement("button");
+                        deleteButton.type = "button";
+                        deleteButton.classList.add("btn", "btn-danger", "float-right");
+                        deleteButton.setAttribute("data-toggle", "modal");
+                        deleteButton.setAttribute("data-target", "#modalDelete");
+                        deleteButton.setAttribute("data-id", keys[key]);
+                        deleteButton.textContent = "Delete";
+
+                        flexDiv.appendChild(cardDiv);
+                        cardDiv.appendChild(overlay);
+                        cardDiv.appendChild(cardBody);
+                        cardBody.appendChild(cardTitle);
+                        cardBody.appendChild(cardSubtitle);
+                        cardBody.appendChild(cardText);
+                        cardBody.appendChild(cardCategory);
+                        cardBody.appendChild(editButton);
+                        cardBody.appendChild(deleteButton);
+
+                }
+            }
+
+            function filterCards(category) {
+                let cards;
+
+                if (category === "ALL") {
+                    cards = Object.values(cardsInfo);
+                } else {
+                    cards = Object.values(cardsInfo).filter(card => card.category === category);
+                }
+
+                displayCards(cards);
+            }
+
+            function pagination_menu(category) {
+                let btnActivo = document.getElementById("categories").getElementsByClassName("active")[0];
+                btnActivo.classList.remove('active');
+
+
+                let btnSeleccionado = document.getElementById(category);
+                btnSeleccionado.classList.add("active");
+
+                filterCards(category);
+            }
+
+            filterCards("ALL");
+
+            $('#modal').on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget);
+                let modal = $(this);
+                let cardTitle = button.data('title');
+                let cardSubtitle = button.data('subtitle');
+                let cardText = button.data('text');
+                let cardImg = button.data('img');
+                let cardId = button.data('id'); 
+
+                modal.find('.modal-body input#title-name').val(cardTitle);
+                modal.find('.modal-body input#subtitle-name').val(cardSubtitle);
+                modal.find('.modal-body textarea#text-name').val(cardText);
+                modal.find('.modal-body input#img-name').val(cardImg);
+
+                modal.find("#save").off('click').on('click', function () {
+                    let card = cardsInfo[cardId];
+                    card.title = document.getElementById("title-name").value;
+                    card.subtitle = document.getElementById("subtitle-name").value;
+                    card.text = document.getElementById("text-name").value;
+                    card.img = document.getElementById("img-name").value;
+                    filterCards("ALL");
+                    $('#modalDelete').modal('hide');
+                });
+            })
+
+            $('#modalDelete').on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget)
+                let cardId = button.data('id'); 
+                let modal = $(this)
+
+                modal.find("#delete").off('click').on('click', function () {
+                    delete cardsInfo[cardId];
+                    filterCards("ALL");
+                    $('#modalDelete').modal('hide');
+                });
+            })
+
+        </script>
+    </body>
+</html>
